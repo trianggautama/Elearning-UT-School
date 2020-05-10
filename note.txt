@@ -1,0 +1,52 @@
+modul/mod_user/aksi_user.php?module=user&act=input
+
+senin bjm
+selasa konsul -- 2
+rabu bjm
+kamis kuliah
+jumat -- 3
+sabtu --10
+
+ = user
+tampil soal
+
+input jawab soal
+
+Asal = asal perusahaan
++ jabatan 
+
+
+tabel test
+id_test
+id_event
+nomor_soal
+kode_soal
+jawaban
+b_s
+
+tabel test
+id test
+id user*
+id event*
+status L,TL
+event_test
+
+id_event
+periode
+tanggal
+tempat
+istruktur
+aktf y/n
+
+event ditarik ke test
+
+peserta_event
+id_peserta
+id_event
+id_user
+pembayaran enum ('l','bl')
+
+
+
+report
+nilai teorinya
