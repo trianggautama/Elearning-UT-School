@@ -53,7 +53,7 @@ else{
             <!-- /.card-header -->
 
             <div class=\"card-body table-responsive\">
-              <table id=\"dataTable\" class=\"table table-bordered table-striped\">
+              <table id=\"datatable-default\" class=\"table table-bordered table-striped\">
                 <thead>
                 <tr>
                 <th>No</th>

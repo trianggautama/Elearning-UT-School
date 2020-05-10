@@ -59,24 +59,41 @@ else{
 <?php 
 
         echo "
-        <section class=\"content-header\">
-         <h1>
-          Data Peserta <br><br>
-          <button id=\"formbtn\" class=\"btn btn-success\" onclick=location.href=\"?module=peserta&act=tambahpeserta\"><i class=\"fa fa-plus\"></i> Tambah Peserta</button>
-         </h1>
-         </section>
-        
+
+         <header class='page-header'>
+         <h2>Data Peserta</h2>
+             <div class='right-wrapper text-right'>
+             <ol class='breadcrumbs'>
+               <li>
+                 <a href='#'>
+                   <i class='fas fa-file'></i>
+                 </a>
+               </li>
+               <li><span>Data</span></li>
+               <li><span>Peserta</span></li>
+             </ol> 
+               <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+             </div>
+           </header>
+           
         <section class=\"content\">
         <div class=\"row\">
-        <div class=\"col-xs-12\">    
-        <div class=\"center\">
-          <div class=\"box\">
-            <!--<div class=\"box-header\">-->              
-            <!--</div>-->
-            <!-- /.box-header -->
+        <div class=\"col-md-12\">    
+          <div class=\"card\">
+            <div class=\"card-header\"> 
+            <div class='row'>
+              <div class='col-md-6'>Data Peserta</div>
+              <div class='col-md-6 text-right'>
+                <a href=\"modul/mod_laporan/cetakdata_peserta.php\" target=\"_blank\">
+                <button id=\"formbtn\" class=\"btn btn-primary\" ><i class=\"fa fa-print\"></i> Cetak </button> </a>
+                <button id=\"formbtn\" class=\"btn btn-success\" onclick=location.href=\"?module=peserta&act=tambahpeserta\"><i class=\"fa fa-plus\"></i> Tambah Peserta</button>
+              </div>
+            </div>            
+            </div>
+            <!-- /.card-header -->
 
-            <div class=\"box-body table-responsive\">
-              <table id=\"dataTable\" class=\"table table-bordered table-striped\">
+            <div class=\"card-body table-responsive\">
+              <table id=\"datatable-default\" class=\"table table-bordered table-striped\">
                 <thead>
                 <tr>
                 <th>No</th>
@@ -113,14 +130,10 @@ else{
                 echo "</tbody>  
                             
                 </table>
-                <a href=\"modul/mod_laporan/cetakdata_peserta.php\" target=\"_blank\">
-                <button id=\"formbtn\" class=\"btn btn-success\" ><i class=\"fa fa-print\"></i> Cetak </button> </a>
                 </div>
-                <!-- /.box-body -->
+                <!-- /.card-body -->
               </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
+              <!-- /.card -->
           </div>
           <!-- /.row -->
         </section>";
@@ -129,32 +142,39 @@ else{
   
     case "tambahpeserta":
       echo "
-      <section class=\"content-header\">
-      <h1>
-        Data Peserta
-      </h1>
-      <ol class=\"breadcrumb\">
-        <li><a href=\"index.php?module=beranda\"><i class=\"fa fa-dashboard\"></i> Home</a></li>
-        <li class=\"active\">Tambah Data Peserta</li>
-      </ol>
-      </section>
+      <header class='page-header'>
+      <h2>Tambah Peserta</h2>
+          <div class='right-wrapper text-right'>
+          <ol class='breadcrumbs'>
+            <li>
+              <a href='#'>
+                <i class='fas fa-file'></i>
+              </a>
+            </li>
+            <li><span>Data</span></li>
+            <li><span>Peserta</span></li>
+            <li><span>Tambah</span></li>
+          </ol> 
+            <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+          </div>
+        </header>
 
       <section class=\"content\">
         <div class=\"row\">
         <div class=\"col-md-12\">
       <!-- Horizontal Form -->
-          <div class=\"box box-info\">
-            <div class=\"box-header with-border\">
-            <h3 class=\"box-title\">Registrasi Pembayaran</h3>
+          <div class=\"card \">
+            <div class=\"card-header with-border\">
+            <h3 class=\"card-title\">Registrasi Pembayaran</h3>
             </div>
-            <!-- /.box-header -->
+            <!-- /.card-header -->
             <!-- form start -->
             <form class=\"form-horizontal\" method=\"POST\" action=\"$aksi?module=peserta&act=input\" enctype=\"multipart/form-data\">
-              <div class=\"box-body\"> 
+              <div class=\"card-body\"> 
 
                 <div class=\"form-group\">
                   <label for=\"inputNama\" class=\"col-sm-2 control-label\">Nama User<span class='text-danger' title='This field is required'>*</span></label>
-                  <div class=\"col-sm-9\">
+                  <div class=\"col-sm-12\">
                   <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\" placeholder=\"Ketik beberapa huruf\" name=\"nama\" onkeyup=\"autoComplete();\" required>
                     <input type=\"hidden\" name=\"id_user\" class=\"form-control\" id=\"id_user\" placeholder=\"\" required>
                       <div  id=\"hasil\" class=\"autocomplete\">
@@ -164,7 +184,7 @@ else{
           
                  <div class=\"form-group\">
                   <label for=\"inputNama\" class=\"col-sm-2 control-label\">Pembayaran<span class='text-danger' title='This field is required'>*</span></label>
-                <div class=\"col-sm-9\">
+                <div class=\"col-sm-12\">
                 <div class=\"form-check\">
                 <input class=\"form-check-input\" type=\"radio\" name=\"pembayaran\" id=\"exampleRadios1\" value=\"l\">
                 <label class=\"form-check-label\" for=\"exampleRadios1\">
@@ -186,12 +206,12 @@ else{
                 </div>
                 
               </div>
-              <!-- /.box-body -->
-              <div class=\"box-footer text-center\">
+              <!-- /.card-body -->
+              <div class=\"card-footer text-right\">
                 <button type=\"submit\" class=\"btn btn-default\" onclick=\"self.history.back()\">Back</button> &nbsp;                
                 <button type=\"submit\" name=\"submit\" class=\"btn btn-info\">Save</button>                
               </div>
-              <!-- /.box-footer -->
+              <!-- /.card-footer -->
             </form>
           
           </div>
@@ -200,40 +220,48 @@ else{
         <!-- /.row -->
       </section>
           
-          <!-- /.box --> ";
+          <!-- /.card --> ";
     break;
        
     case "editpeserta":
      $user=new User();
       $r=$user->detail_peserta_edit($_GET['id']);
       
-      echo"<section class=\"content-header\">
-      <h1>
-        Data Peserta
-      </h1>
-      <ol class=\"breadcrumb\">
-        <li><a href=\"index.php?module=beranda\"><i class=\"fa fa-dashboard\"></i> Home</a></li>
-        <li class=\"active\">Edit Data Peserta</li>
-      </ol>
-      </section>
+      echo"
+      <header class='page-header'>
+      <h2>Tambah Peserta</h2>
+          <div class='right-wrapper text-right'>
+          <ol class='breadcrumbs'>
+            <li>
+              <a href='#'>
+                <i class='fas fa-file'></i>
+              </a>
+            </li>
+            <li><span>Data</span></li>
+            <li><span>Peserta</span></li>
+            <li><span>edit</span></li>
+          </ol> 
+            <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+          </div>
+        </header>
 
       <section class=\"content\">
         <div class=\"row\">
-        <div class=\"col-xs-12\">
+        <div class=\"col-md-12\">
       <!-- Horizontal Form -->
-          <div class=\"box box-info\">
-            <div class=\"box-header with-border\">
-            <h3 class=\"box-title\">Tambah Data Peserta</h3>
+          <div class=\"card \">
+            <div class=\"card-header with-border\">
+            <h3 class=\"card-title\">Tambah Data Peserta</h3>
             </div>
-            <!-- /.box-header -->
+            <!-- /.card-header -->
             <!-- form start -->
             <form class=\"form-horizontal\" method=\"POST\" enctype=\"multipart/form-data\" action=\"$aksi?module=peserta&act=update\">
             <input type=\"hidden\" name=\"id\" value=\"$r[id_peserta]\">
-              <div class=\"box-body\">
+              <div class=\"card-body\">
 
                 <div class=\"form-group\">
                   <label for=\"inputNama\" class=\"col-sm-2 control-label\">Nama Peserta<span class='text-danger' title='This field is required'>*</span></label>
-                  <div class=\"col-sm-9\">
+                  <div class=\"col-sm-12\">
                   <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\"  name=\"nama\" value=\"$r[nama]\" readonly>
                     <input type=\"hidden\" name=\"id_user\" value=\"$r[id_user]\" class=\"form-control\" id=\"id_user\" placeholder=\"\" required>
                   </div>
@@ -241,7 +269,7 @@ else{
 
                 <div class=\"form-group\">
                   <label for=\"inputNama\" class=\"col-sm-2 control-label\">Pembayaran<span class='text-danger' title='This field is required'>*</span></label>
-                <div class=\"col-sm-9\">";
+                <div class=\"col-sm-12\">";
                 if ($r['pembayaran']=="l") {
                   echo "
                 <div class=\"form-check\">
@@ -283,12 +311,12 @@ else{
                 </div>
                 
               </div>
-              <!-- /.box-body -->
-              <div class=\"box-footer text-center\">
+              <!-- /.card-body -->
+              <div class=\"card-footer text-right\">
                 <button type=\"submit\" class=\"btn btn-default\" onclick=\"self.history.back()\">Back</button> &nbsp;                
                 <button type=\"submit\" name=\"submit\" class=\"btn btn-info\">Simpan</button>                
               </div>
-              <!-- /.box-footer -->
+              <!-- /.card-footer -->
             </form>
           
           </div>
@@ -297,7 +325,7 @@ else{
         <!-- /.row -->
       </section>
           
-          <!-- /.box --> ";
+          <!-- /.card --> ";
 
 
   

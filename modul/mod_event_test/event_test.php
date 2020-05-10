@@ -21,16 +21,36 @@ else{
     ?>
 
 <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Data Instruktur</h1>
+      <header class='page-header'>
+         <h2>Data Instruktur</h2>
+             <div class='right-wrapper text-right'>
+             <ol class='breadcrumbs'>
+               <li>
+                 <a href='#'>
+                   <i class='fas fa-file'></i>
+                 </a>
+               </li>
+               <li><span>Data</span></li>
+               <li><span>Instruktur</span></li>
+             </ol> 
+               <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+             </div>
+           </header>
 
-        <button id="formbtn" class="btn btn-success" onclick=location.href="?module=event_test&act=tambahevent"><i class="fa fa-plus">
-          
-        </i> Tambah Event</button>     
         <br><br>   
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <div class="card-header ">
+              <div class="row">
+              <div class="col-md-6">
+              <h5 class=" mb-2 text-gray-800">Data Instruktur</h5>
+              </div>
+              <div class="col-md-6 text-right">
+                <a href="modul/mod_laporan/cetakinstruktur.php" target="_blank">
+                <button id="formbtn" class="btn btn-primary" ><i class="fa fa-print"></i> Cetak </button> </a>
+                <button id="formbtn" class="btn btn-success" onclick=location.href="?module=event_test&act=tambahevent"><i class="fa fa-plus"></i> Tambah Event</button>     
+              </div>
+            </div>
             </div>
 
             <div class="card-body">
@@ -76,8 +96,6 @@ else{
                     
                   </tbody>
                 </table>
-                <a href="modul/mod_laporan/cetakinstruktur.php" target="_blank">
-                <button id="formbtn" class="btn btn-success" ><i class="fa fa-print"></i> Cetak </button> </a>
               </div>
             </div>
           </div>
@@ -121,11 +139,12 @@ else{
             <div class="form-group">
               <input type="text" class="form-control" name="instruktur" required>
             </div>
+            <div class="text-right">
+            <div class="form-group">
+                <input type="submit" name="input" value="Simpan" class="btn btn-warning" style="color:white;">
+            </div>
+            </div>
         </div>
-
-      <div class="form-group">
-          <input type="submit" name="input" value="Simpan" class="btn btn-warning" style="color:white;">
-      </div>
     </form>
   </div>
 
