@@ -146,38 +146,75 @@ header("location:login.php?auth");
                             <i class="fas fa-home"></i>
                             <span>Home</span></a>
                         </li>
-
-                        <li class="nav-item active">
-                          <a class="nav-link" href="index.php?module=soal">
-                            <i class="fas fa-fw fa-tasks"></i>
-                            <span>Input Soal Teori</span></a>
-                        </li>
-
-                        <li class="nav-item active">
-                          <a class="nav-link" href="index.php?module=hteori">
-                            <i class="fas fa-fw fa-tasks"></i>
-                            <span>Nilai Tes Teori</span></a>
-                        </li>
-
-                        <li class="nav-item active">
-                          <a class="nav-link" href="index.php?module=praktek">
-                            <i class="fas fa-fw fa-tasks"></i>
-                            <span>Nilai Tes Praktek</span></a>
-                        </li>
+						<li class="nav-parent">
+				            <a class="nav-link" href="#">
+							<i class="fas fa-fw fa-users"></i>
+				                 <span>Data Siswa</span>
+				            </a>
+				        <ul class="nav nav-children">
+							<li>
+                                <a class="nav-link" href="index.php?module=kelas">Data Kelas</a>
+							</li>
+							<li>
+                              <a class="nav-link" href="index.php?module=peserta">
+                                <span>Data Peserta</span>
+                              </a>
+                              </li>
+				        </ul>
+						</li> 
+						<li class="nav-parent">
+				            <a class="nav-link" href="#">
+							<i class="fas fa-fw fa-book"></i>
+				                 <span>Data Mata Pelajaran</span>
+				            </a>
+				        <ul class="nav nav-children">
+							<li>
+                                <a class="nav-link" href="index.php?module=mapel">Data Mata Pelajaran</a>
+				            </li>
+							<li class="nav-item active">
+                          		<a class="nav-link" href="index.php?module=penjadwalan">
+                            	<span>Penjadwalan</span></a>
+							</li>
+							<li class="nav-item active">
+                          		<a class="nav-link" href="index.php?module=materi">
+                            	<span>Materi</span></a>
+                        	</li>
+				        </ul>
+						</li> 
+						<li class="nav-parent">
+				            <a class="nav-link" href="#">
+							<i class="fas fa-fw fa-question-circle"></i>
+				                 <span>Data Kuis</span>
+				            </a>
+				        <ul class="nav nav-children">
+							<li class="nav-item active">
+							<a class="nav-link" href="index.php?module=soal">
+								<span>Input Soal Teori</span></a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="index.php?module=hteori">
+								<span>Nilai Tes Teori</span></a>
+							</li>
+							<li class="nav-item active">
+                          		<a class="nav-link" href="index.php?module=praktek">
+                            	<span>Nilai Tes Praktek</span></a>
+                        	</li>
+				        </ul>
+						</li> 
                         <li class="nav-parent">
-				                        <a class="nav-link" href="#">
-				                            <i class="fas fa-asterisk" aria-hidden="true"></i>
-				                            <span>Data Kelulusan</span>
-				                        </a>
-				                        <ul class="nav nav-children">
-				                            <li>
-                                      <a class="nav-link" href="index.php?module=laporan">Data Kelulusan</a>
-				                            </li>
-				                            <li>
-                                      <a class="nav-link" href="index.php?module=tlaporan">Data Tidak Lulus</a>
-				                            </li>
-				                        </ul>
-				                    </li> 
+				            <a class="nav-link" href="#">
+				                <i class="fas fa-asterisk" aria-hidden="true"></i>
+				                 <span>Data Kelulusan</span>
+				            </a>
+				        <ul class="nav nav-children">
+				            <li>
+                                <a class="nav-link" href="index.php?module=laporan">Data Kelulusan</a>
+				            </li>
+				             <li>
+                                <a class="nav-link" href="index.php?module=tlaporan">Data Tidak Lulus</a>
+				            </li>
+				        </ul>
+				    </li> 
                       </ul>
                   </nav>
                   <hr class="separator" />
@@ -192,12 +229,6 @@ header("location:login.php?auth");
                               <a class="nav-link" href="index.php?module=user">
                                 <i class="fas fa-fw fa-users"></i>
                                 <span>Data User</span>
-                              </a>
-                              </li>
-                              <li>
-                              <a class="nav-link" href="index.php?module=peserta">
-                                <i class="fas fa-fw fa-users"></i>
-                                <span>Data Peserta</span>
                               </a>
                               </li>
                               <li>

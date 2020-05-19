@@ -46,6 +46,18 @@
 		elseif ($_GET['module']=="tlaporan") {
 			include 'modul/mod_laporan/data_tkelulusan.php';
 		}
+		elseif ($_GET['module']=="kelas") {
+			include 'modul/mod_kelas/data_kelas.php';
+		}
+		elseif ($_GET['module']=="mapel") {
+			include 'modul/mod_mapel/data_mapel.php';
+		}
+		elseif ($_GET['module']=="materi") {
+			include 'modul/mod_materi/data_materi.php';
+		}
+		elseif ($_GET['module']=="penjadwalan") {
+			include 'modul/mod_penjadwalan/data_penjadwalan.php';
+		}
 	}
 	else  {
 		if ($_SESSION['level']=="Admin") {
