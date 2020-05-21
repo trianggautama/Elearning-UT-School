@@ -139,7 +139,7 @@ header("location:login.php?auth");
                 <?php 
                   if ($_SESSION['level']=="Admin") { 
                 ?>
-				            <nav id="menu" class="nav-main" role="navigation">
+				    <nav id="menu" class="nav-main" role="navigation">
 				                <ul class="nav nav-main">
                         <li class="nav-item active">
                           <a class="nav-link" href="index.php?module=home">
@@ -240,7 +240,58 @@ header("location:login.php?auth");
                           </ul>
                       </div>
                   </div>
-                  <?php } ?>
+				  <?php }else { ?>
+					<nav id="menu" class="nav-main" role="navigation">
+				                <ul class="nav nav-main">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="index.php?module=home">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span></a>
+						</li>
+						<li class="nav-item active">
+                          <a class="nav-link" href="index.php?module=nilai_kelulusan">
+                            <i class="fas fa-file"></i>
+                            <span>Nilai Kelulusan</span></a>
+						</li>
+						<li class="nav-item active">
+                          <a class="nav-link" href="index.php?module=test">
+                            <i class="fas fa-file"></i>
+                            <span>Tes Teori</span></a>
+                        </li>
+                      </ul>
+                  </nav>
+					<!-- <li class="nav-item active">
+						<a class="nav-link" href="index.php?module=hteori">
+						<i class="fas fa-fw fa-tachometer-alt"></i>
+						<span>Hasil Tes Teori</span></a>
+					</li> -->
+				<?php 
+				if ($ada>0) {
+				
+				?>
+      <li class="nav-item active">
+        <a class="nav-link" href="modul/mod_laporan/sertifikat.php?id=<?= $id_user ?>" target="_blank">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Cetak Sertifikat</span></a>
+      </li>
+
+<?php   
+  } else {
+
+  }
+  ?>
+
+     <!--  <div class="sidebar-heading">
+        Sharing Product Knowledge
+      </div>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php?module=soal">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Materi Modul</span></a>
+      </li> -->
+<?php 
+}
+ ?>
                 </div>
              </div>
         </aside>
