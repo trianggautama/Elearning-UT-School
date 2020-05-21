@@ -46,7 +46,7 @@
  <?php }
   ?>
 <h2>Nilai Teori</h2>
-  <div class="box-body table-responsive">
+  <div class="card-body table-responsive">
               <table id="" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -100,7 +100,7 @@
 <br>
 
 <h2>Nilai Praktek</h2>
-  <div class="box-body table-responsive">
+  <div class="card-body table-responsive">
               <table id="" class="table table-bordered table-striped">
                 <thead>
                 <tr>

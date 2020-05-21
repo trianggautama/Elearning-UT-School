@@ -39,9 +39,25 @@ else{
 
 
     ?>
-
-<div class="container">
-    <h2>Test Soal</h2> 
+          <header class='page-header'>
+        <h2>Tes </h2>
+            <div class='right-wrapper text-right'>
+            <ol class='breadcrumbs'>
+              <li>
+                <a href='#'>
+                  <i class='fas fa-file'></i>
+                </a>
+              </li>
+              <li><span>Tes</span></li>
+            </ol> 
+              <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+            </div>
+          </header>
+  <div class="card">
+    <div class="card-header">
+      <h2>Test Soal</h2> 
+    </div>
+    <div class="card-body">
     Selamat Datang <b> <?= $peserta['nama'] ?> </b>. <p> Jawablah pertanyaan-pertanyan berikut dengan benar, dan jangan lupa berdoa sebelum memulai tes :) </p><hr> 
     <form method="post" enctype="multipart/form-data" action="<?php echo $aksi?>?module=test&act=input">
     <input type="hidden" name="id_user" value="<?= $id_user ?>">
@@ -61,11 +77,11 @@ else{
 
      ?>
         <div class="form-group">
-            <label for="inputNama" class="col-sm-2 control-label">
+            <label for="inputNama" class=" control-label">
             <?php if ($s['gambar']!="") {
               echo "<img src=\"photo/$s[gambar]\" width=\"230px\" hight=\"230px\">";
             } ?>
-             <?=$no ?> <?=$pertanyaan ?></label>
+             <?=$no ?>.  <?=$pertanyaan ?></label>
             <input type="hidden" name="id_soal[<?= $no ?>]" value="<?= $id_soal ?>">
             <input type="hidden" name="kode_soal[<?= $no ?>]" value="<?= $kode_soal ?>">
             <input type="hidden" name="nomor_soal[<?= $no ?>]" value="<?= $no ?>">
@@ -100,6 +116,7 @@ else{
               </div>
               </div>
               </div>
+              <hr>
               <?php 
               $no++;
               }
@@ -109,7 +126,8 @@ else{
       </div>
     </form>
   </div>
-
+    </div>
+  
 <?php
 }
   }
