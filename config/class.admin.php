@@ -368,7 +368,19 @@ class User
     public function delete_kelas($id)
     {
         $query = "DELETE FROM kelas WHERE id_kelas='$id'";
-        $result = $this->db->query($query) or die($this->db->error);
+        $result = $this->db->query($query);
+        if (!$result) {
+
+            $message = "Tidak bisa menghapus data karena data kelas di pakai di tabel lain";
+
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            header("Location: ../../index.php?module=kelas");
+        } else {
+
+            $message = "Berhasil menghapus data";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+
     }
 
     public function tampil_mapel()
@@ -417,6 +429,67 @@ class User
     public function delete_mapel($id)
     {
         $query = "DELETE FROM mapel WHERE id_mapel='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function tampil_penjadwalan()
+    {
+        $query = "SELECT * FROM penjadwalan
+		LEFT JOIN kelas ON penjadwalan.id_kelas=kelas.id_kelas
+		LEFT JOIN mapel ON penjadwalan.id_mapel=mapel.id_mapel order by id_penjadwalan asc";
+        $result = $this->db->query($query);
+        $num_result = $result->num_rows;
+        if ($num_result > 0) {
+            while ($rows = $result->fetch_assoc()) {
+                $this->datauszzz[] = $rows;
+            }
+            return $this->datauszzz;
+        }
+    }
+
+    public function detail_penjadwalan($id)
+    {
+        $query = "SELECT * FROM penjadwalan WHERE id_penjadwalan = '$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+        $penjadwalan_data = $result->fetch_array(MYSQLI_ASSOC);
+        return $penjadwalan_data;
+    }
+
+    public function detail_penjadwalan_edit($id)
+    {
+        $query = "SELECT * FROM penjadwalan WHERE id_penjadwalan = '$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+        $penjadwalan_data = $result->fetch_array(MYSQLI_ASSOC);
+        return $penjadwalan_data;
+    }
+
+    public function simpan_penjadwalan($id_kelas, $id_mapel, $judul, $tanggal_upload)
+    {
+        $query = "INSERT INTO penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function simpan_penjadwalan_file($id_kelas, $id_mapel, $judul, $tanggal_upload, $nama_gambar)
+    {
+        $query = "INSERT INTO penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload',file='$nama_gambar'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function update_penjadwalan($id_kelas, $id_mapel, $judul, $id)
+    {
+        $query = "UPDATE penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul' WHERE id_penjadwalan='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function update_penjadwalan_file($id_kelas, $id_mapel, $judul, $tanggal_upload, $nama_gambar, $id)
+    {
+        $query = "UPDATE penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload',file='$nama_gambar' WHERE id_penjadwalan='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function delete_penjadwalan($id)
+    {
+        $query = "DELETE FROM penjadwalan WHERE id_penjadwalan='$id'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 
