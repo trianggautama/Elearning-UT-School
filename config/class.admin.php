@@ -493,6 +493,66 @@ class User
         $result = $this->db->query($query) or die($this->db->error);
     }
 
+    public function tampil_materi()
+    {
+        $query = "SELECT * FROM materi
+		LEFT JOIN mapel ON materi.id_mapel=mapel.id_mapel order by id_materi asc";
+        $result = $this->db->query($query);
+        $num_result = $result->num_rows;
+        if ($num_result > 0) {
+            while ($rows = $result->fetch_assoc()) {
+                $this->datauszzz[] = $rows;
+            }
+            return $this->datauszzz;
+        }
+    }
+
+    public function detail_materi($id)
+    {
+        $query = "SELECT * FROM materi WHERE id_materi = '$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+        $materi_data = $result->fetch_array(MYSQLI_ASSOC);
+        return $materi_data;
+    }
+
+    public function detail_materi_edit($id)
+    {
+        $query = "SELECT * FROM materi WHERE id_materi = '$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+        $materi_data = $result->fetch_array(MYSQLI_ASSOC);
+        return $materi_data;
+    }
+
+    public function simpan_materi($id_mapel, $judul, $tanggal_upload)
+    {
+        $query = "INSERT INTO materi SET id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function simpan_materi_file($id_mapel, $judul, $tanggal_upload, $nama_gambar)
+    {
+        $query = "INSERT INTO materi SET id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload',file='$nama_gambar'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function update_materi($id_mapel, $judul, $id)
+    {
+        $query = "UPDATE materi SET id_mapel='$id_mapel',judul='$judul' WHERE id_materi='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function update_materi_file($id_mapel, $judul, $tanggal_upload, $nama_gambar, $id)
+    {
+        $query = "UPDATE materi SET id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload',file='$nama_gambar' WHERE id_materi='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function delete_materi($id)
+    {
+        $query = "DELETE FROM materi WHERE id_materi='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
     public function tampil_peserta_nilai()
     {
         $query = "SELECT * FROM test n,user u, event_test e WHERE n.id_user=u.id_user and n.id_event=e.id_event and status_teori='l' order by id_test asc";
