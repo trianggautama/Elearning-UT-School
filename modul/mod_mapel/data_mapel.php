@@ -1,221 +1,393 @@
-<?php    
+<?php
 // Apabila user belum login
-if (empty($_SESSION['email']) AND empty($_SESSION['password'])){
-  echo "<h2 class=\"fail\">Untuk mengakses modul, Anda harus login dulu.</h2>
-        <p class=\"fail\"><a href=\"login.php?auth\">LOGIN</a></p></div>";   
+if (empty($_SESSION['email']) and empty($_SESSION['password'])) {
+    echo "<h2 class=\"fail\">Untuk mengakses modul, Anda harus login dulu.</h2>
+        <p class=\"fail\"><a href=\"login.php?auth\">LOGIN</a></p></div>";
 }
 // Apabila user sudah login dengan benar, maka terbentuklah session
-else{
-  
+else {
 
-  $aksi = "modul/mod_soal/aksi_mapel.php";
+    $aksi = "modul/mod_mapel/aksi_mapel.php";
 
-  // mengatasi variabel yang belum di definisikan (notice undefined index)
-  $act = isset($_GET['act']) ? $_GET['act'] : ''; 
+    // mengatasi variabel yang belum di definisikan (notice undefined index)
+    $act = isset($_GET['act']) ? $_GET['act'] : '';
 
-  switch($act){
-    // Tampil user
-    default:
-    $user=new User();
-    $soal=$user->tampil_soal();
+    switch ($act) {
+        // Tampil mapel
+        default: ?>
 
-    ?>
+<style>
+            .autocomplete {
+                padding: 2px 25px;
+                white-space: nowrap;
+                overflow: hidden;
+                background: #fff;
+                position: absolute;
+                z-index: 99;
+            }
+             .autocomplete a {
+                font-family: 'Roboto', Arial, Sans-serif;
+                font-size: 15px;
+                color: #838384;
+                text-decoration: none;
+            }
 
-<!-- Page Heading -->
-      <header class="page-header">
-        <h2>Data Mata Pelajaran</h2>
-            <div class="right-wrapper text-right">
-            <ol class="breadcrumbs">
-              <li>
-                <a href="#">
-                  <i class="fas fa-file"></i>
-                </a>
-              </li>
-              <li><span>Data</span></li>
-              <li><span>Mat Pelajaran</span></li>
-            </ol> 
-              <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
-            </div>
-          </header>
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            <div class="row">
-              <div class="col-md-6">
-                <h5 class="h5 text-gray-800">Data Mata Pelajaran</h5>
+            .autocomplete a hover{
+                font-family: 'Roboto', Arial, Sans-serif;
+                font-size: 15px;
+                color: #fff;
+                background: #f7f7f7;
+                text-decoration: none;
+            }
+            .autocomplete-selected {
+                background: #337ab7;
+            }
+            .autocomplete-suggestions strong {
+                font-weight: normal;
+                color: #3399FF;
+            }
+            .autocomplete-group {
+                padding: 2px 5px;
+            }
+            .autocomplete-group strong {
+                display: none;
+
+            }
+        </style>
+
+<?php
+
+            echo "
+
+         <header class='page-header'>
+         <h2>Data mapel</h2>
+             <div class='right-wrapper text-right'>
+             <ol class='breadcrumbs'>
+               <li>
+                 <a href='#'>
+                   <i class='fas fa-file'></i>
+                 </a>
+               </li>
+               <li><span>Data</span></li>
+               <li><span>Mata Pelajaran</span></li>
+             </ol>
+               <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+             </div>
+           </header>
+
+        <section class=\"content\">
+        <div class=\"row\">
+        <div class=\"col-md-12\">
+          <div class=\"card\">
+            <div class=\"card-header\">
+            <div class='row'>
+              <div class='col-md-6'>Data Mata Pelajaran</div>
+              <div class='col-md-6 text-right'>
+                <a href=\"modul/mod_laporan/cetakdata_mapel.php\" target=\"_blank\">
+                <button id=\"formbtn\" class=\"btn btn-primary\" ><i class=\"fa fa-print\"></i> Cetak </button> </a>
+                <button id=\"formbtn\" class=\"btn btn-success\" onclick=location.href=\"?module=mapel&act=tambahmapel\"><i class=\"fa fa-plus\"></i> Tambah mapel</button>
               </div>
-              <div class="col-md-6">
-                <div class="text-right">
-                  <button id="formbtn" class="btn btn-success" onclick=location.href="?module=mapel&act=tambahmapel"><i class="fa fa-plus"></i> Tambah Mata Pelajaran</button>     
-                </div>
-              </div>
             </div>
             </div>
+            <!-- /.card-header -->
 
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="datatable-default" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Mata Pelajaran</th>
-                      <th>Kelas</th>
-                      <th>Pengajar</th>
-                      <th>Deskripsi</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>mapel 1</td>
-                        <td>Kelas 1</td>
-                        <td>Pengajar 2</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-warning " title="Edit Data"><i class="fas fa-edit"></i></a> &nbsp;
-                            <a href="$aksi?module=soal&act=hapus&id=$r[id_soal]" class="btn btn-sm btn-danger"  title="Delete Data" onclick="return confirm('Yakin akan Menghapus Data $r[kode_soal]?')"><i class="fa fa-trash"></i></a>     
-                        </td>
-                    </tr>
-                  </tbody>
+            <div class=\"card-body table-responsive\">
+              <table id=\"datatable-default\" class=\"table table-bordered table-striped\">
+                <thead>
+                <tr>
+                <th>No</th>
+                <th>Kelas</th>
+                <th>Nama Pengajar</th>
+                <th>Nama Mata Pelajaran</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody>";
+
+            $mapel = new User();
+            $news = $mapel->tampil_mapel();
+            $no = 1;
+            if (is_array($news) || is_object($news)) {
+                foreach ($news as $key => $r) {
+                    echo "<tr><td width=10px>$no</td>
+                  <td>$r[kelas]</td>
+                  <td>$r[nama]</td>
+                  <td>$r[mapel]</td>
+                  <td>$r[deskripsi]</td>
+                  <td width=130px>
+                  <a href=\"?module=mapel&act=editmapel&id=$r[id_mapel]\" class=\"btn btn-info btn-xs\" title=\"Edit Data\"><i class=\"fas fa-edit\"></i></a> &nbsp;
+                  <a href=\"$aksi?module=mapel&act=hapus&id=$r[id_mapel]\" class=\"btn btn-danger btn-xs\" title=\"Delete Data\" onclick=\"return confirm('Yakin akan Menghapus Data $r[id_mapel]?')\"><i class=\"fa fa-trash\"></i></a></td>
+              </tr>";
+                    $no++;
+                }
+            }
+
+            echo "</tbody>
+
                 </table>
+                </div>
+                <!-- /.card-body -->
               </div>
-            </div>
+              <!-- /.card -->
           </div>
+          <!-- /.row -->
+        </section>";
 
-<?php 
-  break;
-   case "tambahmapel":
-   $user= new User();
-   $kode_soal= $user->kode_otomatis();
+            break;
+
+        case "tambahmapel":
+            echo "
+      <header class='page-header'>
+      <h2>Tambah Data Mata Pelajaran</h2>
+          <div class='right-wrapper text-right'>
+          <ol class='breadcrumbs'>
+            <li>
+              <a href='#'>
+                <i class='fas fa-file'></i>
+              </a>
+            </li>
+            <li><span>Data</span></li>
+            <li><span>Mata Pelajaran</span></li>
+            <li><span>Tambah</span></li>
+          </ol>
+            <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+          </div>
+        </header>
+
+      <section class=\"content\">
+        <div class=\"row\">
+        <div class=\"col-md-12\">
+      <!-- Horizontal Form -->
+          <div class=\"card \">
+            <div class=\"card-header with-border\">
+            <h3 class=\"card-title\">Tambah Data mapel</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form class=\"form-horizontal\" method=\"POST\" action=\"$aksi?module=mapel&act=input\" >
+              <div class=\"card-body\">
+                <div class=\"form-group\">
+                    <label for=\"inputNama\"  class=\"col-sm-2 control-label\">Kelas</label>
+                    <div class=\"col-sm-12\">
+                    <select name=\"id_kelas\" id=\"id_kelas\" class=\"form-control\">
+                    <option value=\"\">-- Pilih Kelas --</option>";
+            $k = new User();
+            $kelas = $k->tampil_kelas();
+            if (is_array($kelas) || is_object($kelas)) {
+                foreach ($kelas as $key => $r) {
+                    echo "  <option value=\"$r[id_kelas]\">$r[kelas]</option>
+                        ";
+                }
+            }
+            echo "  </select>
+                </div>
+                </div>
+                <div class=\"form-group\">
+                    <label for=\"inputNama\"  class=\"col-sm-2 control-label\">Nama Pengajar</label>
+                    <div class=\"col-sm-12\">
+                    <select name=\"id_user\" id=\"id_user\" class=\"form-control\">
+                    <option value=\"\">-- Pilih Nama Pengajar --</option>";
+            $k = new User();
+            $user = $k->tampil_instruktur_user();
+            if (is_array($user) || is_object($user)) {
+                foreach ($user as $key => $r) {
+                    echo "  <option value=\"$r[id_user]\">$r[nama]</option>
+                        ";
+                }
+            }
+            echo "  </select>
+                </div>
+                </div>
+                <div class=\"form-group\">
+                  <label for=\"inputNama\" class=\"col-sm-2 control-label\">Nama Mata Pelajaran<span class='text-danger' title='This field is required'></span></label>
+                  <div class=\"col-sm-12\">
+                  <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\" placeholder=\"Ketik nama mata pelajaran\" name=\"mapel\" onkeyup=\"autoComplete();\" required>
+
+                      <div  id=\"mapel\" class=\"autocomplete\">
+                  </div>
+                </div>
+                </div>
+                <div class=\"form-group\">
+                  <label for=\"inputNama\" class=\"col-sm-2 control-label\">Deskripsi<span class='text-danger' title='This field is required'></span></label>
+                  <div class=\"col-sm-12\">
+                  <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\" placeholder=\"Ketik deskripsi\" name=\"deskripsi\" onkeyup=\"autoComplete();\" required>
+
+                      <div  id=\"mapel\" class=\"autocomplete\">
+                  </div>
+                </div>
+                </div>
+
+                <div class=\"form-group\">
+                  <div class=\"col-sm-offset-2 col-sm-8\">
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+              <div class=\"card-footer text-right\">
+                <button type=\"submit\" class=\"btn btn-default\" onclick=\"self.history.back()\">Back</button> &nbsp;
+                <button type=\"submit\" name=\"submit\" class=\"btn btn-info\">Save</button>
+              </div>
+              <!-- /.card-footer -->
+            </form>
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+
+          <!-- /.card --> ";
+            break;
+
+        case "editmapel":
+            $user = new User();
+            $r = $user->detail_mapel_edit($_GET['id']);
+
+            echo "
+      <header class='page-header'>
+      <h2>Tambah mapel</h2>
+          <div class='right-wrapper text-right'>
+          <ol class='breadcrumbs'>
+            <li>
+              <a href='#'>
+                <i class='fas fa-file'></i>
+              </a>
+            </li>
+            <li><span>Data</span></li>
+            <li><span>mapel</span></li>
+            <li><span>edit</span></li>
+          </ol>
+            <a class='sidebar-right-toggle'><i class='fas fa-chevron-left'></i></a>
+          </div>
+        </header>
+
+      <section class=\"content\">
+        <div class=\"row\">
+        <div class=\"col-md-12\">
+      <!-- Horizontal Form -->
+          <div class=\"card \">
+            <div class=\"card-header with-border\">
+            <h3 class=\"card-title\">Edit Data Mata Pelajaran</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form class=\"form-horizontal\" method=\"POST\" action=\"$aksi?module=mapel&act=update\">
+            <input type=\"hidden\" name=\"id\" value=\"$r[id_mapel]\">
+              <div class=\"card-body\">
+                 <div class=\"form-group\">
+                    <label for=\"inputNama\"  class=\"col-sm-2 control-label\">Kelas</label>
+                    <div class=\"col-sm-12\">
+                    <select name=\"id_kelas\" id=\"id_kelas\" class=\"form-control\">
+                    <option value=\"\">-- Pilih Kelas --</option>";
+            $k = new User();
+            $kelas = $k->tampil_kelas();
+            if (is_array($kelas) || is_object($kelas)) {
+                foreach ($kelas as $key => $p) {
+                    $selected = ($p[id_kelas] == $r[id_kelas]) ? 'selected' : '';
+                    echo "  <option $selected value=\"$p[id_kelas]\">$p[kelas]</option>
+                        ";
+                }
+            }
+            echo "  </select>
+                </div>
+                </div>
+                 <div class=\"form-group\">
+                    <label for=\"inputNama\"  class=\"col-sm-2 control-label\">Nama Pengajar</label>
+                    <div class=\"col-sm-12\">
+                    <select name=\"id_user\" id=\"id_user\" class=\"form-control\">
+                    <option value=\"\">-- Pilih Nama Pengajar --</option>";
+            $k = new User();
+            $user = $k->tampil_instruktur_user();
+            if (is_array($user) || is_object($user)) {
+                foreach ($user as $key => $p) {
+                    $selected = ($p[id_user] == $r[id_user]) ? 'selected' : '';
+                    echo "  <option $selected value=\"$p[id_user]\">$p[nama]</option>
+                        ";
+                }
+            }
+            echo "  </select>
+                </div>
+                </div>
+                <div class=\"form-group\">
+                  <label for=\"inputNama\" class=\"col-sm-2 control-label\">Nama Mata Pelajaran<span class='text-danger' title='This field is required'></span></label>
+                  <div class=\"col-sm-12\">
+                  <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\"  name=\"mapel\" value=\"$r[mapel]\" >
+                  </div>
+                </div>
+                <div class=\"form-group\">
+                  <label for=\"inputNama\" class=\"col-sm-2 control-label\">Deskripsi<span class='text-danger' title='This field is required'></span></label>
+                  <div class=\"col-sm-12\">
+                  <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\"  name=\"deskripsi\" value=\"$r[deskripsi]\" >
+                  </div>
+                </div>
+
+
+
+                <div class=\"form-group\">
+                  <div class=\"col-sm-offset-2 col-sm-8\">
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+              <div class=\"card-footer text-right\">
+                <button type=\"submit\" class=\"btn btn-default\" onclick=\"self.history.back()\">Back</button> &nbsp;
+                <button type=\"submit\" name=\"submit\" class=\"btn btn-info\">Simpan</button>
+              </div>
+              <!-- /.card-footer -->
+            </form>
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+
+          <!-- /.card --> ";
+
+            break;
+    }
+}
 ?>
-<!-- isi dengan form tambah soal -->
-<header class="page-header">
-        <h2>Tambah Mata Pelajaran</h2>
-            <div class="right-wrapper text-right">
-            <ol class="breadcrumbs">
-              <li>
-                <a href="#">
-                  <i class="fas fa-file"></i>
-                </a>
-              </li>
-              <li><span>Data</span></li>
-              <li><span>Mata Pelajaran</span></li>
-              <li><span>Tambah</span></li>
-            </ol> 
-              <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
-            </div>
-          </header>
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-         <h3>Tambah Mata Pelajaran</h3>
-        </div>
-        <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="<?php echo $aksi?>?module=soal&act=input">
-            <div class="form-group">
-                <label for="">Nama Mata Pelajaran</label>
-                <input type="text" class="form-control" name="nama" id="nama">
-            </div>
-            <div class="form-group">
-                <label for="">Kelas</label>
-                <select name="pengajar_id" id="pengajar_id" class="form-control">
-                    <option value="">-- Pilih dari Kelas --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Pengajar</label>
-                <select name="pengajar_id" id="pengajar_id" class="form-control">
-                    <option value="">-- Pilih dari Pengajar --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Deskripsi</label>
-               <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-            </div>
-        </div>
-        <div class="card-footer text-right">
-            <button type="submit" class="btn btn-default text-right mt-1" style="color:grey;"> <i class="fa fa-arrow-left"> batal</i> </button>
-            <button type="submit" name="input" class="btn btn-warning text-right mt-1" style="color:white;"> <i class="fa fa-save"> Simpan</i> </button>
-        </div>
-        </form>
-    </div>
-</div>
+ <script language="JavaScript">
+    var ajaxRequest;
+    function getAjax() { //fungsi untuk mengecek AJAX pada browser
+        try {
+            ajaxRequest = new XMLHttpRequest();
+        } catch (e) {
+            try {
+                ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                try {
+                   ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    alert("Your browser broke!");
+                    return false;
+                }
+            }
+        }
+    }
+    function autoComplete() { //fungsi menangkap input search dan menampilkan hasil search
+        getAjax();
+        input = document.getElementById('inputan').value;
+        if (input == "") {
+            document.getElementById("mapel").innerHTML = "";
+        }
+        else {
+            ajaxRequest.open("GET","cari.php?input="+input);
+            ajaxRequest.onreadystatechange = function() {
+                document.getElementById("mapel").innerHTML = ajaxRequest.responseText;
+            }
+            ajaxRequest.send(null);
+        }
+    }
 
-<?php 
-break;
-case "editkelas":
-   $user= new User();
-   $s= $user->detail_soal($_GET['id']);
+    function autoInsert(nama) { //fungsi mengisi input text dengan hasil pencarian yang dipilih
+        document.getElementById("inputan").value = name;
+        document.getElementById("mapel").innerHTML = "";
 
- ?>
-<header class="page-header">
-  <h2>Edit Kelas</h2>
-    <div class="right-wrapper text-right">
-      <ol class="breadcrumbs">
-        <li>
-          <a href="#">
-            <i class="fas fa-file"></i>
-          </a>
-        </li>
-        <li><span>Data</span></li>
-        <li><span>Kelas</span></li>
-        <li><span>Edit</span></li>
-      </ol> 
-      <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
-    </div>
-  </header>
-<div class="container">
-<div class="card">
-        <div class="card-header">
-         <h3>Tambah Kelas</h3>
-        </div>
-        <div class="card-body">
-        <form method="post" enctype="multipart/form-data" action="<?php echo $aksi?>?module=kelas&act=update">
-            <div class="form-group">
-                <label for="">Nama Mata Pelajaran</label>
-                <input type="text" class="form-control" name="nama" id="nama">
-            </div>
-            <div class="form-group">
-                <label for="">Kelas</label>
-                <select name="pengajar_id" id="pengajar_id" class="form-control">
-                    <option value="">-- Pilih dari Kelas --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Pengajar</label>
-                <select name="pengajar_id" id="pengajar_id" class="form-control">
-                    <option value="">-- Pilih dari Pengajar --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Deskripsi</label>
-               <textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-            </div>
-        </div>
-        <div class="card-footer text-right">
-            <button type="submit" class="btn btn-default text-right mt-1" style="color:grey;"> <i class="fa fa-arrow-left"> batal</i> </button>
-            <button type="submit" name="input" class="btn btn-warning text-right mt-1" style="color:white;"> <i class="fa fa-save"> Simpan</i> </button>
-        </div>
-        </form>
-    </div>
-  </div>
-  <script>
-    (function($) {
-      'use strict';
-        var datatableInit = function() {
-        $('#datatable-default').dataTable({
-          dom: '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p'
-        });
-      };
-
-      $(function() {
-        datatableInit();
-      });
-
-      }).apply(this, [jQuery]);
-  </script>
-<?php 
-break;
-}}
- ?>
+    }
+</script>

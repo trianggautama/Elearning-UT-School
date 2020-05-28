@@ -77,6 +77,19 @@ class User
         }
     }
 
+    public function tampil_instruktur_user()
+    {
+        $query = "SELECT * FROM user WHERE jabatan='Instruktur/admin' order by id_user asc";
+        $result = $this->db->query($query);
+        $num_result = $result->num_rows;
+        if ($num_result > 0) {
+            while ($rows = $result->fetch_assoc()) {
+                $this->dataus[] = $rows;
+            }
+            return $this->dataus;
+        }
+    }
+
     public function simpan_user($nrp, $pass, $nama, $tempat_lahir, $tanggal_lahir, $jk, $email, $asal, $jabatan, $level)
     {
         $query = "INSERT INTO user SET nrp='$nrp', pass='$pass', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', jk='$jk', email='$email', asal='$asal', level='$level'";
@@ -310,6 +323,7 @@ class User
             return $this->dataus;
         }
     }
+
     public function tampil_kelas()
     {
         $query = "SELECT * FROM kelas order by id_kelas asc";
@@ -354,6 +368,55 @@ class User
     public function delete_kelas($id)
     {
         $query = "DELETE FROM kelas WHERE id_kelas='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function tampil_mapel()
+    {
+        $query = "SELECT * FROM mapel
+		LEFT JOIN kelas ON mapel.id_kelas=kelas.id_kelas
+		LEFT JOIN user ON mapel.id_user=user.id_user order by id_mapel asc";
+        $result = $this->db->query($query);
+        $num_result = $result->num_rows;
+        if ($num_result > 0) {
+            while ($rows = $result->fetch_assoc()) {
+                $this->datauszzz[] = $rows;
+            }
+            return $this->datauszzz;
+        }
+    }
+
+    public function detail_mapel($id)
+    {
+        $query = "SELECT * FROM mapel WHERE id_mapel = '$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+        $mapel_data = $result->fetch_array(MYSQLI_ASSOC);
+        return $mapel_data;
+    }
+
+    public function detail_mapel_edit($id)
+    {
+        $query = "SELECT * FROM mapel WHERE id_mapel = '$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+        $mapel_data = $result->fetch_array(MYSQLI_ASSOC);
+        return $mapel_data;
+    }
+
+    public function simpan_mapel($id_kelas, $id_user, $mapel, $deskripsi)
+    {
+        $query = "INSERT INTO mapel SET id_kelas='$id_kelas',id_user='$id_user',mapel='$mapel',deskripsi='$deskripsi'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function update_mapel($id_kelas, $id_user, $mapel, $deskripsi, $id)
+    {
+        $query = "UPDATE mapel SET id_kelas='$id_kelas',id_user='$id_user',mapel='$mapel',deskripsi='$deskripsi' WHERE id_mapel='$id'";
+        $result = $this->db->query($query) or die($this->db->error);
+    }
+
+    public function delete_mapel($id)
+    {
+        $query = "DELETE FROM mapel WHERE id_mapel='$id'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 
