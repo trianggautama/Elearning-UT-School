@@ -463,21 +463,21 @@ class User
         return $penjadwalan_data;
     }
 
-    public function simpan_penjadwalan($id_kelas, $id_mapel, $judul, $tanggal_upload)
+    public function simpan_penjadwalan($id_kelas, $id_mapel,  $tanggal_upload)
     {
-        $query = "INSERT INTO penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload'";
+        $query = "INSERT INTO penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',tanggal_upload='$tanggal_upload'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 
-    public function simpan_penjadwalan_file($id_kelas, $id_mapel, $judul, $tanggal_upload, $nama_gambar)
+    public function simpan_penjadwalan_file($id_kelas, $id_mapel,  $tanggal_upload, $nama_gambar)
     {
-        $query = "INSERT INTO penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul',tanggal_upload='$tanggal_upload',file='$nama_gambar'";
+        $query = "INSERT INTO penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',tanggal_upload='$tanggal_upload',file='$nama_gambar'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 
-    public function update_penjadwalan($id_kelas, $id_mapel, $judul, $id)
+    public function update_penjadwalan($id_kelas, $id_mapel,  $tanggal_upload, $id)
     {
-        $query = "UPDATE penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',judul='$judul' WHERE id_penjadwalan='$id'";
+        $query = "UPDATE penjadwalan SET id_kelas='$id_kelas',id_mapel='$id_mapel',tanggal_upload='$tanggal_upload' WHERE id_penjadwalan='$id'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 

@@ -98,9 +98,7 @@ else {
                 <th>No</th>
                 <th>Kelas</th>
                 <th>Mata Pelajaran</th>
-                <th>Judul</th>
-                <th>Tanggal Upload</th>
-                <th>File</th>
+                <th>Jadwal</th>
                 <th>Aksi</th>
                 </tr>
                 </thead>
@@ -114,9 +112,7 @@ else {
                     echo "<tr><td width=10px>$no</td>
                   <td>$r[kelas]</td>
                   <td>$r[mapel]</td>
-                  <td>$r[judul]</td>
                   <td>$r[tanggal_upload]</td>
-                  <td><a href=\"$aksi?module=penjadwalan&act=download&filename=$r[file]\">Preview</a></td>
                   <td width=130px>
                   <a href=\"?module=penjadwalan&act=editpenjadwalan&id=$r[id_penjadwalan]\" class=\"btn btn-info btn-xs\" title=\"Edit Data\"><i class=\"fas fa-edit\"></i></a> &nbsp;
                   <a href=\"$aksi?module=penjadwalan&act=hapus&id=$r[id_penjadwalan]\" class=\"btn btn-danger btn-xs\" title=\"Delete Data\" onclick=\"return confirm('Yakin akan Menghapus Data $r[id_penjadwalan]?')\"><i class=\"fa fa-trash\"></i></a>
@@ -203,19 +199,14 @@ else {
                 </div>
                 </div>
                 <div class=\"form-group\">
-                  <label for=\"inputNama\" class=\"col-sm-2 control-label\">Judul<span class='text-danger' title='This field is required'></span></label>
-                  <div class=\"col-sm-12\">
-                  <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\" placeholder=\"Ketik judul penjadwalan\" name=\"judul\" onkeyup=\"autoComplete();\" required>
-
-                      <div  id=\"judul\" class=\"autocomplete\">
-                  </div>
+                <div class=\"col-sm-12\">
+                            <input type=\"date\" id=\"jadwal\" title=\"jadwal\"    class='form-control' name=\"jadwal\"/>
+                <div class=\"text-danger\">
                 </div>
                 </div>
                 <div class=\"form-group\">
-                <label for=\"inputNama\" class=\"col-sm-2 control-label\">File<span class='text-danger' title='This field is required'></span></label>
                 <div class=\"col-sm-12\">
-                            <input type=\"file\" id=\"file\" title=\"File\"    class='form-control' name=\"file\"/>
-                <p class='help-block'>File types support : PDF</p>
+                            <input type=\"hidden\" id=\"file\" title=\"File\"    class='form-control' name=\"file\"/>
                 <div class=\"text-danger\">
                 </div>
                 </div>
@@ -313,16 +304,14 @@ else {
                 </div>
                 </div>
                 <div class=\"form-group\">
-                  <label for=\"inputNama\" class=\"col-sm-2 control-label\">Judul<span class='text-danger' title='This field is required'></span></label>
-                  <div class=\"col-sm-12\">
-                  <input class=\"form-control\" id=\"inputan\" autocomplete=\"off\" type=\"text\"  name=\"judul\" value=\"$r[judul]\" >
-                  </div>
+                <div class=\"col-sm-12\">
+                            <input type=\"date\" id=\"jadwal\" title=\"jadwal\"    class='form-control' name=\"jadwal\" value=\"$r[tanggal_upload]\"/>
+                <div class=\"text-danger\">
+                </div>
                 </div>
                 <div class=\"form-group\">
-                <label for=\"inputNama\" class=\"col-sm-2 control-label\">File<span class='text-danger' title='This field is required'></span></label>
                 <div class=\"col-sm-12\">
-                            <input type=\"file\" id=\"file\" title=\"File\"    class='form-control' name=\"file\"/>
-                <p class='help-block'>File types support : PDF</p>
+                            <input type=\"hidden\" id=\"file\" title=\"File\"    class='form-control' name=\"file\" />
                 <div class=\"text-danger\">
                 </div>
                 </div>
