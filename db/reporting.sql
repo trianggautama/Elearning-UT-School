@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 28/05/2020 14:21:37
+ Date: 29/05/2020 20:42:57
 */
 
 SET NAMES utf8mb4;
@@ -272,23 +272,44 @@ INSERT INTO `mapel` VALUES (2, 2, 1, 'UPA', '-');
 COMMIT;
 
 -- ----------------------------
+-- Table structure for materi
+-- ----------------------------
+DROP TABLE IF EXISTS `materi`;
+CREATE TABLE `materi` (
+  `id_materi` int(255) NOT NULL AUTO_INCREMENT,
+  `id_mapel` int(255) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `tanggal_upload` date NOT NULL,
+  PRIMARY KEY (`id_materi`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of materi
+-- ----------------------------
+BEGIN;
+INSERT INTO `materi` VALUES (5, 1, 'Baru', '62HASIL-SEMINAR-PROPOSAL-16630624 (3).pdf', '2020-05-29');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for penjadwalan
 -- ----------------------------
 DROP TABLE IF EXISTS `penjadwalan`;
 CREATE TABLE `penjadwalan` (
-  `id_penjadwalan` int(255) NOT NULL,
+  `id_penjadwalan` int(255) NOT NULL AUTO_INCREMENT,
   `id_mapel` int(255) NOT NULL,
   `id_kelas` int(255) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `file` varchar(255) NOT NULL,
   `tanggal_upload` date NOT NULL,
   PRIMARY KEY (`id_penjadwalan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of penjadwalan
 -- ----------------------------
 BEGIN;
+INSERT INTO `penjadwalan` VALUES (3, 1, 1, 'Upload baru', '72HASIL-SEMINAR-PROPOSAL-16630624 (3).pdf', '2020-05-29');
 COMMIT;
 
 -- ----------------------------
