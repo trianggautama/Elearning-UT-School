@@ -95,12 +95,12 @@ if (isset($_POST['login'])) {
 						<hr>
             <form class="user" method="POST">
 							<div class="form-group mb-3">
-								<label>Username</label>
+								<label>Email</label>
 								<div class="input-group">
                 <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
 									<span class="input-group-append">
 										<span class="input-group-text">
-											<i class="fas fa-envolve"></i>
+											<i class="fs fa-envolve"></i>
 										</span>
 									</span>
 								</div>

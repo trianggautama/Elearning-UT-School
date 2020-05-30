@@ -10,7 +10,7 @@ $html="<!DOCTYPE html>
 <html>
 <head>
 <title></title>
-<link href='../../css/sb-admin-2.min.css' rel='stylesheet'>
+<link rel='stylesheet' href='../../vendor/bootstrap/css/bootstrap.css' />
 </head>
 <body>";
 

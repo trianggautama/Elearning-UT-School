@@ -10,12 +10,12 @@ $html="<!DOCTYPE html>
 <html>
 <head>
 <title></title>
-<link href='../../css/sb-admin-2.min.css' rel='stylesheet'>
+<link rel='stylesheet' href='../../vendor/bootstrap/css/bootstrap.css' />
 </head>
 <body>";
 
 $html .="<div class='text-center'>
-<img src = '../../img/logo11.png' width='300px'>
+<img src = '../../img/logo_ut.png' width='100px'>
 <h4><b>Laporan Data Nilai Teori</h4>
 </div>";
 

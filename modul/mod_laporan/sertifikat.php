@@ -10,7 +10,7 @@ $html="<!DOCTYPE html>
 <html>
 <head>
 <title>Sertifikat</title>
-<link href='../../css/sb-admin-2.min.css' rel='stylesheet'>
+<link rel='stylesheet' href='../../vendor/bootstrap/css/bootstrap.css' />
 <style>
 
 table {

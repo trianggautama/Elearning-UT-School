@@ -92,7 +92,7 @@ class User
 
     public function simpan_user($nrp, $pass, $nama, $tempat_lahir, $tanggal_lahir, $jk, $email, $asal, $jabatan, $level)
     {
-        $query = "INSERT INTO user SET nrp='$nrp', pass='$pass', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', jk='$jk', email='$email', asal='$asal', level='$level'";
+        $query = "INSERT INTO user SET nrp='$nrp', pass='$pass', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', jk='$jk', email='$email', asal='$asal',  jabatan='$jabatan',level='$level'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 

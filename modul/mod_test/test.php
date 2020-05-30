@@ -79,7 +79,7 @@ else{
         <div class="form-group">
             <label for="inputNama" class=" control-label">
             <?php if ($s['gambar']!="") {
-              echo "<img src=\"photo/$s[gambar]\" width=\"230px\" hight=\"230px\">";
+              echo "<img src=\"photo/$s[gambar]\" width=\"230px\" hight=\"230px\"> <br>";
             } ?>
              <?=$no ?>.  <?=$pertanyaan ?></label>
             <input type="hidden" name="id_soal[<?= $no ?>]" value="<?= $id_soal ?>">

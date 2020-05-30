@@ -10,16 +10,24 @@ $html="<!DOCTYPE html>
 <html>
 <head>
 <title></title>
-<link href='../../css/sb-admin-2.min.css' rel='stylesheet'>
+<link rel='stylesheet' href='../../vendor/bootstrap/css/bootstrap.css' />
+<link rel='stylesheet' href='../../vendor/animate/animate.css'>
+
+<link rel='stylesheet' href='../../vendor/font-awesome/css/all.min.css' />
 </head>
 <body>";
 
 $html .="<div class='text-center'>
-<img src = '../../img/logo11.png' width='300px'>
+<br>
+<img src = '../../img/logo_ut.png' width='100px'>
+<br>
 <h4><b>Laporan Data Peserta</h4>
 </div>";
 
-$html .="<table  class=\"table table-bordered table-striped\">
+$html .="
+
+<div style='padding:15px;'>
+<table  class=\"table table-bordered table-striped\">
 <thead>
 <tr>
 <th>No</th>
@@ -46,10 +54,18 @@ $no++;
 $html .="</tbody>  
                             
 </table>
-<p class = 'text-right'><b>Banjarmasin, $tanggal</b></p>
-<p class = 'text-right'><b>Instruktur</b></p>
+<br>
+<div class='row'>
+<div class='col-md-11'>
+</div>
+<div class='col-md-1 text-center pl-5'>
+<p class = ''><b>Banjarmasin, $tanggal</b></p>
+<p class = ''><b>Instruktur</b></p>
 <br><br>
-<p class = 'text-right'><b>".$r['instruktur']."</b></p>
+<p class = ''><b>".$r['instruktur']."</b></p>
+</div>
+</div>
+
 </body>
 </html>";
 
