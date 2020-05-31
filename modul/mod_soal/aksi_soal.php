@@ -37,6 +37,7 @@ elseif ($module == 'soal' and $act == 'input') {
     $random = $user->random(7);
     //
     $kode_soal = $user->escape_string($_POST['kode_soal']);
+    $id_mapel = $user->escape_string($_POST['id_mapel']);
     $soal = $user->escape_string($_POST['soal']);
     $A = $user->escape_string($_POST['A']);
     $B = $user->escape_string($_POST['B']);
@@ -44,7 +45,7 @@ elseif ($module == 'soal' and $act == 'input') {
     $D = $user->escape_string($_POST['D']);
     $jawaban = $user->escape_string($_POST['jawaban']);
 
-    $msg = $validation->check_empty($_POST, array('kode_soal', 'soal', 'A', 'B', 'C', 'D', 'jawaban'));
+    $msg = $validation->check_empty($_POST, array('kode_soal','id_mapel', 'soal', 'A', 'B', 'C', 'D', 'jawaban'));
 
     // checking empty fields
     if ($msg != null) {
@@ -55,10 +56,10 @@ elseif ($module == 'soal' and $act == 'input') {
         echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
         echo "</p>";
     } else {
+
         // // Apabila tidak ada foto yang di upload
         if (empty($lokasi_file)) {
-
-            $simpan_soal = $user->simpan_soal($kode_soal, $soal, $A, $B, $C, $D, $jawaban);
+            $simpan_soal = $user->simpan_soal($kode_soal,$id_mapel, $soal, $A, $B, $C, $D, $jawaban);
 
             header("location:../../index.php?module=" . $module);
         }
@@ -73,14 +74,14 @@ elseif ($module == 'soal' and $act == 'input') {
                 $ukuran = 60;
                 $gb = $gambar->UploadFoto($nama_gambar, $folder, $ukuran);
 
-                $simpan_soal = $user->simpan_soal_gb($kode_soal, $soal, $A, $B, $C, $D, $jawaban, $nama_gambar);
+                $simpan_soal = $user->simpan_soal_gb($kode_soal,$id_mapel, $soal, $A, $B, $C, $D, $jawaban, $nama_gambar);
                 header("location:../../index.php?module=" . $module);
             }
         }
 
     }
 }
-// Update user
+// Update soal
 elseif ($module == 'soal' and $act == 'update') {
 
     $id = $_POST['id'];

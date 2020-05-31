@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.26)
 # Database: reporting
-# Generation Time: 2020-05-29 16:02:56 +0000
+# Generation Time: 2020-05-30 02:30:03 +0000
 # ************************************************************
 
 
@@ -98,16 +98,6 @@ VALUES
 	(48,5,3,18,13,'8','A','B'),
 	(49,5,3,18,14,'9','A','B'),
 	(50,5,3,18,15,'10','D','S'),
-	(51,6,3,17,6,'1','A','B'),
-	(52,6,3,17,7,'2','A','B'),
-	(53,6,3,17,8,'3','D','B'),
-	(54,6,3,17,9,'4','D','B'),
-	(55,6,3,17,10,'5','C','B'),
-	(56,6,3,17,11,'6','A','B'),
-	(57,6,3,17,12,'7','C','B'),
-	(58,6,3,17,13,'8','A','B'),
-	(59,6,3,17,14,'9','B','S'),
-	(60,6,3,17,15,'10','B','S'),
 	(61,7,3,15,6,'1','A','B'),
 	(62,7,3,15,7,'2','A','B'),
 	(63,7,3,15,8,'3','D','B'),
@@ -358,10 +348,8 @@ LOCK TABLES `peserta_event` WRITE;
 INSERT INTO `peserta_event` (`id_peserta`, `id_event`, `id_user`, `pembayaran`)
 VALUES
 	(4,3,12,'l'),
-	(5,3,16,'l'),
 	(6,3,13,'l'),
 	(7,3,18,'l'),
-	(8,3,17,'l'),
 	(9,3,15,'l'),
 	(10,3,19,'l'),
 	(11,3,22,'l'),
@@ -374,7 +362,8 @@ VALUES
 	(18,3,29,'l'),
 	(19,3,32,'l'),
 	(20,3,31,'l'),
-	(21,3,30,'l');
+	(21,3,30,'l'),
+	(24,3,17,'l');
 
 /*!40000 ALTER TABLE `peserta_event` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -446,10 +435,8 @@ LOCK TABLES `test` WRITE;
 INSERT INTO `test` (`id_test`, `id_user`, `id_event`, `nilai_teori`, `status_teori`, `kategori`, `nilai_praktek`, `status_praktek`)
 VALUES
 	(2,12,3,'100','l','Wheel Loader','50','tl'),
-	(3,16,3,'50','tl','','',NULL),
 	(4,13,3,'100','l','Wheel Loader','90','l'),
 	(5,18,3,'90','l','Wheel Loader','90','l'),
-	(6,17,3,'80','l','Wheel Loader','70','l'),
 	(7,15,3,'70','l','Wheel Loader','85','l'),
 	(8,19,3,'60','tl','','',NULL),
 	(9,22,3,'90','l','Wheel Loader','65','tl'),
@@ -498,7 +485,8 @@ VALUES
 	(11,'1111','admin','Pasuruan','1998-01-15','Laki-laki','admin@gmail.com','admin','Banjarbaru','Admin','','Admin'),
 	(12,'4675657','Dewi Indriani','Pasuruan','1998-01-02','Laki-laki','dewi@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','PT TIRTA KENCANA','Mekanik','26blehhh.jpg','User'),
 	(13,'91217063','wili','Pasuruan','0019-03-05','Laki-laki','wili@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','PT SEJAHTERA ABADI','Mekanik','29kebo.png','User'),
-	(15,'6789678','sella','Bandung','1996-01-07','Perempuan','sella@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','PT Sabumi','Operator','','User');
+	(15,'6789678','sella','Bandung','1996-01-07','Perempuan','sella@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','PT Sabumi','Operator','','User'),
+	(17,'123121','Tri Angga Utama, S.kom','Banjarbaru','1997-03-04','Laki-laki','trianggategarutama@gmail.com','1fd5cd9766249f170035b7251e2c6b61','Banjarbaru','Staff','71avatar.png','User');
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;

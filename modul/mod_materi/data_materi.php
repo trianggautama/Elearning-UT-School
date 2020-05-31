@@ -270,7 +270,7 @@ else {
             if (is_array($mapel) || is_object($mapel)) {
                 foreach ($mapel as $key => $p) {
                     $selected = ($p[id_mapel] == $r[id_mapel]) ? 'selected' : '';
-                    echo "  <option $selected value=\"$p[id_mapel]\">$p[nama]</option>
+                    echo "  <option $selected value=\"$p[id_mapel]\">$p[mapel]</option>
                         ";
                 }
             }

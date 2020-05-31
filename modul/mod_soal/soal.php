@@ -58,6 +58,7 @@ else{
                   <thead>
                     <tr>
                       <th>No</th>
+                      <th>Mata Pelajaran</th>
                       <th>Kode Soal</th>
                       <th>Soal</th>
                       <th>Kunci Jawaban</th>
@@ -73,6 +74,7 @@ else{
                         foreach ($soal as $key => $r) {
                           echo "
                           <td> $no </td>
+                          <td>$r[mapel]</td>
                           <td> $r[kode_soal] </td>
                           <td> $r[soal] </td>
                           <td> $r[jawaban] </td>
@@ -129,10 +131,14 @@ else{
   <hr>
     <form method="post" enctype="multipart/form-data" action="<?php echo $aksi?>?module=soal&act=input">
       <div class="row">
+
         <div class="col-md-2 col-sm-6" style="line-height: 32px;">
           <div class="form-group">
             <label>Kode Soal</label>
             </div>
+            <div class="form-group">
+              <label > Mata Pelajaran</label>
+          </div>
           <div class="form-group">
             <label>Soal</label>
           </div>
@@ -160,6 +166,22 @@ else{
           <div class="form-group">
               <input type="text" class="form-control" name="kode_soal" value="<?php echo "$kode_soal"; ?>" readonly >
             </div>
+            <div class="form-group">
+          <select name="id_mapel" id="id_mapel" class="form-control">
+                    <option value="">-- Pilih Nama Mata Pelajaran --</option>";
+                    <?php
+                     $k = new User();
+                     $mapel = $k->tampil_mapel();
+                     if (is_array($mapel) || is_object($mapel)) {
+                         foreach ($mapel as $key => $p) {
+                             $selected = ($p[id_mapel] == $r[id_mapel]) ? 'selected' : '';
+                             echo "  <option $selected value=\"$p[id_mapel]\">$p[mapel]</option>
+                                 ";
+                         }
+                     }
+                    ?>
+           </select>
+          </div>
             <div class="form-group">
               <input type="text" class="form-control" name="soal" required>
             </div>
@@ -219,6 +241,9 @@ case "editsoal":
     <input type="hidden" name="id" value="<?php echo $s['id_soal'] ?>">
       <div class="row">
         <div class="col-md-2 col-sm-6" style="line-height: 32px;">
+        <div class="form-group">
+              <label > Mata Pelajaran</label>
+          </div>
           <div class="form-group">
             <label>Kode Soal</label>
             </div>
@@ -249,6 +274,22 @@ case "editsoal":
           <div class="form-group">
               <input type="text" class="form-control" name="kode_soal" value="<?php echo $s['kode_soal'] ?>" readonly >
             </div>
+            <div class="form-group">
+          <select name="id_mapel" id="id_mapel" class="form-control">
+                    <option value="">-- Pilih Mata Pelajaran  --</option>";
+                    <?php
+                    $k = new User();
+                    $mapel = $k->tampil_mapel();
+                    if (is_array($mapel) || is_object($mapel)) {
+                        foreach ($mapel as $key => $p) {
+                            $selected = ($p[id_mapel] == $s[id_mapel]) ? 'selected' : '';
+                            echo "  <option $selected value=\"$p[id_mapel]\">$p[mapel] </option>
+                                ";
+                        }
+                    }
+                    ?>
+           </select>
+          </div>
             <div class="form-group">
               <input type="text" class="form-control" name="soal" value="<?php echo $s['soal'] ?>" required>
             </div>

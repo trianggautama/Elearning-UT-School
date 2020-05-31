@@ -134,15 +134,15 @@ class User
         }
     }
 
-    public function simpan_soal_gb($kode_soal, $soal, $A, $B, $C, $D, $jawaban, $nama_gambar)
+    public function simpan_soal_gb($kode_soal,$id_mapel, $soal, $A, $B, $C, $D, $jawaban, $nama_gambar)
     {
-        $query = "INSERT INTO soal SET kode_soal='$kode_soal', soal='$soal', A='$A', B='$B', C='$C', D='$D', jawaban='$jawaban',  gambar='$nama_gambar'";
+        $query = "INSERT INTO soal SET kode_soal='$kode_soal',id_mapel='$id_mapel', soal='$soal', A='$A', B='$B', C='$C', D='$D', jawaban='$jawaban',  gambar='$nama_gambar'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 
-    public function simpan_soal($kode_soal, $soal, $A, $B, $C, $D, $jawaban)
+    public function simpan_soal($kode_soal, $id_mapel, $soal, $A, $B, $C, $D, $jawaban)
     {
-        $query = "INSERT INTO soal SET kode_soal='$kode_soal', soal='$soal', A='$A', B='$B', C='$C', D='$D', jawaban='$jawaban'";
+        $query = "INSERT INTO soal SET kode_soal='$kode_soal',id_mapel='$id_mapel', soal='$soal', A='$A', B='$B', C='$C', D='$D', jawaban='$jawaban'";
         $result = $this->db->query($query) or die($this->db->error);
     }
 
@@ -195,7 +195,8 @@ class User
     //soal
     public function tampil_soal()
     {
-        $query = "SELECT * FROM soal order by id_soal asc";
+        $query = "SELECT * FROM soal
+		LEFT JOIN mapel ON soal.id_mapel=mapel.id_mapel order by id_soal asc"; 
         $result = $this->db->query($query);
         $num_result = $result->num_rows;
         if ($num_result > 0) {
@@ -496,7 +497,7 @@ class User
     public function tampil_materi()
     {
         $query = "SELECT * FROM materi
-		LEFT JOIN mapel ON materi.id_mapel=mapel.id_mapel order by id_materi asc";
+		LEFT JOIN mapel ON materi.id_mapel=mapel.id_mapel order by id_materi asc"; 
         $result = $this->db->query($query);
         $num_result = $result->num_rows;
         if ($num_result > 0) {

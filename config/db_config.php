@@ -2,7 +2,7 @@
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');//ganti dengan user anda
 define('DB_PASSWORD', 'root'); //ganti dengan password anda
-define('DB_DATABASE', 'reporting'); // ganti dengan database anda
+define('DB_DATABASE', 'reporting2'); // ganti dengan database anda
 
 
 
